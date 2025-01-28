@@ -1,0 +1,36 @@
+.container{
+  border:1px solid black;
+  height: 600px;
+  width: 400px;
+  margin: auto;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.resultado{
+  height: 15%;
+  width: 90%;
+  border:1px solid black;
+}
+
+.acciones{
+  height: 75%;
+  width: 90%;
+  border:1px solid black;
+  display:grid; 
+  grid-template-columns: repeat(4,22.5%);
+  grid-template-rows: repeat(4,22.5%);
+  gap:12px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.btn-calculadora{
+  background-color: blue;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
