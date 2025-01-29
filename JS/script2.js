@@ -10,8 +10,9 @@ mostraResultado.classList.add("Resultado_Final");
 resultado.appendChild(mostraResultado);
 //
 
-let primeros;
+let primeros = [];
 let segundos;
+let contador = 0;
 
 let valores = [7,8,9,"*",4,5,6,"-",1,2,3,"+",0,`/`,".","="]; 
 let primer = [];
@@ -41,15 +42,16 @@ for(let i = 0; i < 16; i++){
         // }
 
         if(operadores.length == 0 && valor.value >= 0 && valor.value <= 9 || valor.value == "."){
+            contador++;
             primer.push(valor.value);
             primeros = primer.join("");
+            console.log(primeros.length);
             mostrador.innerHTML = primeros;
 
         }
         if(valor.value == "*" || valor.value == "-" || valor.value == "+" || valor.value == "/"){
-            if(operadores.length == 0){
-                operadores.push(valor.value);
-            }
+                operadores.splice(0,1,valor.value);
+                // operadores.push(valor.value);
             mostrador.innerHTML = operadores;
         }
         if(operadores.length != 0 && valor.value >= 0 && valor.value <= 9){
@@ -58,13 +60,20 @@ for(let i = 0; i < 16; i++){
             mostrador.innerHTML = segundos;
         }
 
+        let resultado;
+
         if(valor.value == "="){
-            let resultado = eval(`${parseInt(primeros)} ${operadores} ${parseInt(segundos)}`);
+            resultado = eval(`${parseInt(primeros)} ${operadores} ${parseInt(segundos)}`);
             console.log(resultado);
+
             if(resultado == Infinity){
                 mostrador.innerHTML = `No se puede dividir entre 0`;
             } else{
                 mostrador.innerHTML = resultado;
+            }
+
+            if(contador > 0){
+                primeros = resultado;
             }
 
             primer = [];
